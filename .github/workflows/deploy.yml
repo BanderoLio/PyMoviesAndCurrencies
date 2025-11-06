@@ -1,0 +1,21 @@
+    name: Deploy to PythonAnywhere
+
+    on:
+      push:
+        branches:
+          - main
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Reload PythonAnywhere Webapp
+            uses: jensvog/pythonanywhere-webapp-reload-action@v1
+            with:
+              host: www.pythonanywhere.com
+              username: BanderoL
+              api-token: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
+              domain-name: BanderoL.pythonanywhere.com
